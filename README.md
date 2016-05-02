@@ -3,7 +3,6 @@ This is my graduation project in 2016.Design and Implementation of online meal o
 
 
 
-Something.
 
 合并测试。
 
