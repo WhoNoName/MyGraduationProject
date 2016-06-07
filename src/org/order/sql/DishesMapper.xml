@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="org.order.dao.DishesDao">
+
+	<select id="findAllDishes" resultType="org.order.entity.Dishes">
+		select * from dishes order by dishes_sales
+	</select>
+
+	<select id="findDishesByTypeId" parameterType="string" resultType="org.order.entity.Dishes">
+		select * from dishes where dishes_type=#{typeId} order by dishes_id 
+	</select>
+
+	<select id="findDishesByDishesName" parameterType="string" resultType="org.order.entity.Dishes">
+		select * from dishes where dishes_name=#{scanName} order by dishes_id 
+	</select>
+
+	<select id="findAllOrderById" parameterType="string" resultType="org.order.entity.Dishes">
+		select * from dishes order by dishes_id
+	</select>
+
+	<select id="findDishesByRandomNum" parameterType="int" resultType="org.order.entity.Dishes">
+		SELECT * FROM ((SELECT * FROM dishes d ORDER BY d.dishes_sales DESC) r) LIMIT #{randomNum},1
+	</select>
+	
+	<select id="findDishesByMerchantId" parameterType="string" resultType="org.order.entity.Dishes">
+		select * from dishes where saller_id=#{merchantId}
+	</select>
+
+	<select id="findDishesByMerchantIdOrderBySales" parameterType="string" resultType="org.order.entity.Dishes">
+		select * from dishes where saller_id=#{merchantId} ORDER BY dishes_sales DESC
+	</select>
+	
+	<select id="findDishesByMerchantIdOrderByScore" parameterType="string" resultType="org.order.entity.Dishes">
+		select * from dishes where saller_id=#{merchantId} ORDER BY dishes_score DESC
+	</select>	
+	
+	<select id="findDishesByMerchantIdOrderByPrice" parameterType="string" resultType="org.order.entity.Dishes">
+		select * from dishes where saller_id=#{merchantId} ORDER BY dishes_price 
+	</select>	
+	
+</mapper>

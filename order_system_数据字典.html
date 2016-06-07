@@ -1,0 +1,476 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>order_system_数据字典</title>
+<link
+	href="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/css/bootstrap.min.css"
+	rel="stylesheet">
+</head>
+<body>
+	<div class="container">
+		<h1 style="text-align:center;">order_system 数据字典</h1>
+		<h3>dishes</h3>
+		<table class="table table-hover table-bordered table-condensed" style="width: 50%;border-color: black;text-align: center;">
+			
+				<tr style="border-color: black;">
+					<td style="border-color: black;">字段名</td>
+					<td style="border-color: black;">数据类型</td>
+					<td style="border-color: black;">默认值</td>
+					<td style="border-color: black;">允许非空</td>
+					<td style="border-color: black;">自动递增</td>
+					
+				</tr>
+			
+		
+				<tr style="border-color: black;">
+					<td style="border-color: black;">dishesId</td>
+					<td style="border-color: black;">varchar(40)</td>
+					<td style="border-color: black;"></td>
+					<td style="border-color: black;">NO</td>
+					<td style="border-color: black;"></td>
+					
+				</tr>
+				<tr>
+					<td style="border-color: black;">dishes_name</td>
+					<td style="border-color: black;">varchar(50)</td>
+					<td style="border-color: black;"></td>
+					<td style="border-color: black;">NO</td>
+					<td style="border-color: black;"></td>
+					
+				</tr>
+				<tr>
+					<td style="border-color: black;">dishes_price</td>
+					<td style="border-color: black;">double(10,5)</td>
+					<td style="border-color: black;">0.00000</td>
+					<td style="border-color: black;">YES</td>
+					<td style="border-color: black;"></td>
+					
+				</tr>
+				<tr>
+					<td style="border-color: black;">saller_id</td>
+					<td style="border-color: black;">varchar(20)</td>
+					<td style="border-color: black;"></td>
+					<td style="border-color: black;">NO</td>
+					<td style="border-color: black;"></td>
+					
+				</tr>
+				<tr>
+					<td style="border-color: black;">dishes_imgurl</td>
+					<td style="border-color: black;">varchar(50)</td>
+					<td style="border-color: black;"></td>
+					<td style="border-color: black;">YES</td>
+					<td style="border-color: black;"></td>
+					
+				</tr>
+				<tr>
+					<td style="border-color: black;">dishes_sales</td>
+					<td style="border-color: black;">int(20)</td>
+					<td style="border-color: black;">0</td>
+					<td style="border-color: black;">YES</td>
+					<td style="border-color: black;"></td>
+					
+				</tr>
+				<tr>
+					<td style="border-color: black;">dishes_score</td>
+					<td style="border-color: black;">double(5,1)</td>
+					<td style="border-color: black;"></td>
+					<td style="border-color: black;">YES</td>
+					<td style="border-color: black;"></td>
+					
+				</tr>
+				<tr>
+					<td style="border-color: black;">dishes_createtime</td>
+					<td style="border-color: black;">datetime(6)</td>
+					<td style="border-color: black;"></td>
+					<td style="border-color: black;">NO</td>
+					<td style="border-color: black;"></td>
+					
+				</tr>
+		
+		</table>
+		<h3>merchant_type</h3>
+		<table class="table table-hover table-bordered table-condensed" style="border-color: black;width: 50%;border: 1px solid black;">
+			
+				<tr style="border-color: black;">
+					<td style="border-color: black;">字段名</td>
+					<td style="border-color: black;">数据类型</td>
+					<td style="border-color: black;">默认值</td>
+					<td style="border-color: black;">允许非空</td>
+					<td style="border-color: black;">自动递增</td>
+					
+				</tr>
+		
+		
+				<tr>
+					<td style="border-color: black;">type_id</td>
+					<td style="border-color: black;">varchar(20)</td>
+					<td style="border-color: black;"></td>
+					<td style="border-color: black;">NO</td>
+					<td style="border-color: black;"></td>
+					
+				</tr>
+				<tr>
+					<td style="border-color: black;">type_des</td>
+					<td style="border-color: black;">varchar(50)</td>
+					<td style="border-color: black;"></td>
+					<td style="border-color: black;">NO</td>
+					<td style="border-color: black;"></td>
+					
+				</tr>
+		
+		</table>
+		<h3>merchants</h3>
+		<table class="table table-hover table-bordered table-condensed" style="width: 50%;border: 1px solid black;">
+			
+				<tr>
+					<td style="border-color: black;">字段名</td>
+					<td style="border-color: black;">数据类型</td>
+					<td style="border-color: black;">默认值</td>
+					<td style="border-color: black;">允许非空</td>
+					<td style="border-color: black;">自动递增</td>
+					
+				</tr>
+		
+		
+				<tr>
+					<td style="border-color: black;">merchantId</td>
+					<td style="border-color: black;">varchar(40)</td>
+					<td style="border-color: black;"></td>
+					<td style="border-color: black;">NO</td>
+					<td style="border-color: black;"></td>
+					
+				</tr>
+				<tr>
+					<td style="border-color: black;">merchant_name</td>
+					<td style="border-color: black;">varchar(32)</td>
+					<td style="border-color: black;"></td>
+					<td style="border-color: black;">NO</td>
+					<td style="border-color: black;"></td>
+					
+				</tr>
+				<tr>
+					<td style="border-color: black;">password</td>
+					<td style="border-color: black;">varchar(16)</td>
+					<td style="border-color: black;"></td>
+					<td style="border-color: black;">NO</td>
+					<td style="border-color: black;"></td>
+					
+				</tr>
+				<tr>
+					<td style="border-color: black;">merchant_picture_url</td>
+					<td style="border-color: black;">varchar(50)</td>
+					<td style="border-color: black;"></td>
+					<td style="border-color: black;">YES</td>
+					<td style="border-color: black;"></td>
+					
+				</tr>
+				<tr>
+					<td style="border-color: black;">merchant_type</td>
+					<td style="border-color: black;">varchar(8)</td>
+					<td style="border-color: black;"></td>
+					<td style="border-color: black;">YES</td>
+					<td style="border-color: black;"></td>
+					
+				</tr>
+				<tr>
+					<td style="border-color: black;">merchant_address</td>
+					<td style="border-color: black;">varchar(50)</td>
+					<td style="border-color: black;"></td>
+					<td style="border-color: black;">NO</td>
+					<td style="border-color: black;"></td>
+					
+				</tr>
+				<tr>
+					<td style="border-color: black;">phone_num</td>
+					<td style="border-color: black;">varchar(11)</td>
+					<td style="border-color: black;"></td>
+					<td style="border-color: black;">NO</td>
+					<td style="border-color: black;"></td>
+					
+				</tr>
+				<tr>
+					<td style="border-color: black;">email</td>
+					<td style="border-color: black;">varchar(50)</td>
+					<td style="border-color: black;"></td>
+					<td style="border-color: black;">YES</td>
+					<td style="border-color: black;"></td>
+					
+				</tr>
+				<tr>
+					<td style="border-color: black;">merchant_permission</td>
+					<td style="border-color: black;">int(10)</td>
+					<td style="border-color: black;">9</td>
+					<td style="border-color: black;">NO</td>
+					<td style="border-color: black;"></td>
+				</tr>
+				<tr>
+					<td style="border-color: black;">merchant_create_time</td>
+					<td style="border-color: black;">datetime</td>
+					<td style="border-color: black;"></td>
+					<td style="border-color: black;">NO</td>
+					<td style="border-color: black;"></td>
+				</tr>
+				<tr>
+					<td style="border-color: black;">avg_time</td>
+					<td style="border-color: black;">int(5)</td>
+					<td style="border-color: black;"></td>
+					<td style="border-color: black;">YES</td>
+					<td style="border-color: black;"></td>
+				</tr>
+				<tr>
+					<td style="border-color: black;">score</td>
+					<td style="border-color: black;">double(5,1)</td>
+					<td style="border-color: black;"></td>
+					<td style="border-color: black;">YES</td>
+					<td style="border-color: black;"></td>
+				</tr>
+				<tr>
+					<td style="border-color: black;">merchant_all_sales</td>
+					<td style="border-color: black;">int(10)</td>
+					<td style="border-color: black;"></td>
+					<td style="border-color: black;">YES</td>
+					<td style="border-color: black;"></td>
+				</tr>
+		
+		</table>
+		<h3>order_form</h3>
+		<table class="table table-hover table-bordered table-condensed" style="width: 50%;border: 1px solid black;">
+			
+				<tr>
+					<td style="border-color: black;">字段名</td>
+					<td style="border-color: black;">数据类型</td>
+					<td style="border-color: black;">默认值</td>
+					<td style="border-color: black;">允许非空</td>
+					<td style="border-color: black;">自动递增</td>
+				</tr>
+			
+	
+				<tr>
+					<td style="border-color: black;">orderId</td>
+					<td style="border-color: black;">varchar(40)</td>
+					<td style="border-color: black;"></td>
+					<td style="border-color: black;">NO</td>
+					<td style="border-color: black;"></td>
+				</tr>
+				<tr>
+					<td style="border-color: black;">userId</td>
+					<td style="border-color: black;">varchar(20)</td>
+					<td style="border-color: black;"></td>
+					<td style="border-color: black;">NO</td>
+					<td style="border-color: black;"></td>
+				</tr>
+				<tr>
+					<td style="border-color: black;">merchantId</td>
+					<td style="border-color: black;">varchar(20)</td>
+					<td style="border-color: black;"></td>
+					<td style="border-color: black;">NO</td>
+					<td style="border-color: black;"></td>
+				</tr>
+				<tr>
+					<td style="border-color: black;">remark</td>
+					<td style="border-color: black;">varchar(255)</td>
+					<td style="border-color: black;"></td>
+					<td style="border-color: black;">YES</td>
+					<td style="border-color: black;"></td>
+				</tr>
+				<tr>
+					<td style="border-color: black;">assessment</td>
+					<td style="border-color: black;">varchar(255)</td>
+					<td style="border-color: black;"></td>
+					<td style="border-color: black;">YES</td>
+					<td style="border-color: black;"></td>
+				</tr>
+				<tr>
+					<td style="border-color: black;">order_status</td>
+					<td style="border-color: black;">varchar(20)</td>
+					<td style="border-color: black;"></td>
+					<td style="border-color: black;">NO</td>
+					<td style="border-color: black;"></td>
+				</tr>
+				<tr>
+					<td style="border-color: black;">order_create_time</td>
+					<td style="border-color: black;">datetime</td>
+					<td style="border-color: black;"></td>
+					<td style="border-color: black;">NO</td>
+					<td style="border-color: black;"></td>
+				</tr>
+				<tr>
+					<td style="border-color: black;">order_complete_time</td>
+					<td style="border-color: black;">datetime</td>
+					<td style="border-color: black;"></td>
+					<td style="border-color: black;">YES</td>
+					<td style="border-color: black;"></td>
+				</tr>
+		
+		</table>
+		<h3>order_list</h3>
+		<table class="table table-hover table-bordered table-condensed" style="width: 50%;border: 1px solid black;">
+		
+				<tr>
+					<td style="border-color: black;">字段名</td>
+					<td style="border-color: black;">数据类型</td>
+					<td style="border-color: black;">默认值</td>
+					<td style="border-color: black;">允许非空</td>
+					<td style="border-color: black;">自动递增</td>
+				</tr>
+		
+		
+				<tr>
+					<td style="border-color: black;">orderListId</td>
+					<td style="border-color: black;">int(20) unsigned</td>
+					<td style="border-color: black;"></td>
+					<td style="border-color: black;">NO</td>
+					<td style="border-color: black;">是</td>
+				</tr>
+				<tr>
+					<td style="border-color: black;">order_form_id</td>
+					<td style="border-color: black;">varchar(20)</td>
+					<td style="border-color: black;"></td>
+					<td style="border-color: black;">NO</td>
+					<td style="border-color: black;"></td>
+				</tr>
+				<tr>
+					<td style="border-color: black;">dishes_id</td>
+					<td style="border-color: black;">varchar(20)</td>
+					<td style="border-color: black;"></td>
+					<td style="border-color: black;">NO</td>
+					<td style="border-color: black;"></td>
+				</tr>
+		
+		</table>
+		<h3>order_status</h3>
+		<table class="table table-hover table-bordered table-condensed" style="width: 50%;border: 1px solid black;">
+			
+				<tr>
+					<td style="border-color: black;">字段名</td>
+					<td style="border-color: black;">数据类型</td>
+					<td style="border-color: black;">默认值</td>
+					<td style="border-color: black;">允许非空</td>
+					<td style="border-color: black;">自动递增</td>
+				</tr>
+			
+
+				<tr>
+					<td style="border-color: black;">orderStatusId</td>
+					<td style="border-color: black;">varchar(20)</td>
+					<td style="border-color: black;"></td>
+					<td style="border-color: black;">NO</td>
+					<td style="border-color: black;"></td>
+				</tr>
+				<tr>
+					<td style="border-color: black;">order_status_des</td>
+					<td style="border-color: black;">varchar(50)</td>
+					<td style="border-color: black;"></td>
+					<td style="border-color: black;">NO</td>
+					<td style="border-color: black;"></td>
+				</tr>
+
+		</table>
+		<h3>permission</h3>
+		<table class="table table-hover table-bordered table-condensed" style="width: 50%;border-color: black;text-align: center;">
+			
+				<tr>
+					<td style="border-color: black;">字段名</td>
+					<td style="border-color: black;">数据类型</td>
+					<td style="border-color: black;">默认值</td>
+					<td style="border-color: black;">允许非空</td>
+					<td style="border-color: black;">自动递增</td>
+				</tr>
+		
+
+				<tr>
+					<td style="border-color: black;">permissionId</td>
+					<td style="border-color: black;">varchar(20)</td>
+					<td style="border-color: black;"></td>
+					<td style="border-color: black;">NO</td>
+					<td style="border-color: black;"></td>
+				</tr>
+				<tr>
+					<td style="border-color: black;">permission_name</td>
+					<td style="border-color: black;">varchar(50)</td>
+					<td style="border-color: black;"></td>
+					<td style="border-color: black;">NO</td>
+					<td style="border-color: black;"></td>
+				</tr>
+
+		</table>
+		<h3>users</h3>
+		<table class="table table-hover table-bordered table-condensed" style="width: 50%;border: 1px solid black;height: 20px;">
+			
+				<tr>
+					<td style="border-color: black;">字段名</td>
+					<td style="border-color: black;">数据类型</td>
+					<td style="border-color: black;">默认值</td>
+					<td style="border-color: black;">允许非空</td>
+					<td style="border-color: black;">自动递增</td>
+				</tr>
+
+				<tr>
+					<td style="border-color: black;">userId</td>
+					<td style="border-color: black;">varchar(40)</td>
+					<td style="border-color: black;"></td>
+					<td style="border-color: black;">NO</td>
+					<td style="border-color: black;"></td>
+				</tr>
+				<tr>
+					<td style="border-color: black;">user_name</td>
+					<td style="border-color: black;">varchar(32)</td>
+					<td style="border-color: black;"></td>
+					<td style="border-color: black;">NO</td>
+					<td style="border-color: black;"></td>
+				</tr>
+				<tr>
+					<td style="border-color: black;">password</td>
+					<td style="border-color: black;">varchar(16)</td>
+					<td style="border-color: black;"></td>
+					<td style="border-color: black;">NO</td>
+					<td style="border-color: black;"></td>
+				</tr>
+				<tr>
+					<td style="border-color: black;">user_picture_url</td>
+					<td style="border-color: black;">varchar(50)</td>
+					<td style="border-color: black;"></td>
+					<td style="border-color: black;">YES</td>
+					<td style="border-color: black;"></td>
+				</tr>
+				<tr>
+					<td style="border-color: black;">dishes_address</td>
+					<td style="border-color: black;">varchar(50)</td>
+					<td style="border-color: black;"></td>
+					<td style="border-color: black;">NO</td>
+					<td style="border-color: black;"></td>
+				</tr>
+				<tr>
+					<td style="border-color: black;">phone_num</td>
+					<td style="border-color: black;">varchar(11)</td>
+					<td style="border-color: black;"></td>
+					<td style="border-color: black;">NO</td>
+					<td style="border-color: black;"></td>
+				</tr>
+				<tr>
+					<td style="border-color: black;">email</td>
+					<td style="border-color: black;">varchar(50)</td>
+					<td style="border-color: black;"></td>
+					<td style="border-color: black;">YES</td>
+					<td style="border-color: black;"></td>
+				</tr>
+				<tr>
+					<td style="border-color: black;">user_permission</td>
+					<td style="border-color: black;">int(10)</td>
+					<td style="border-color: black;">2</td>
+					<td style="border-color: black;">NO</td>
+					<td style="border-color: black;"></td>
+				</tr>
+				<tr>
+					<td style="border-color: black;">user_create_time</td>
+					<td style="border-color: black;">datetime</td>
+					<td style="border-color: black;"></td>
+					<td style="border-color: black;">NO</td>
+					<td style="border-color: black;"></td>
+				</tr>
+	
+		</table>
+	</div>
+</body>
+</html>

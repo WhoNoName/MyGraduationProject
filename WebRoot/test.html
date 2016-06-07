@@ -1,0 +1,153 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+<title>星级评分</title>
+<script src="js/jquery-2.2.3.min.js"
+	type="text/javascript"></script>
+<script>
+	$(function() {
+		$(".star li").mouseenter(function() {
+			$(".star li").css("background", "images/star1.png");
+			$(this).css("background", "images/star1.png");
+			$(this).nextAll().css("background", "images/star2.png");
+		})
+	});
+</script>
+<style type="text/css">
+* {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	float: left;
+}
+
+.star li {
+	float: left;
+	height: 20px;
+	width: 20px;
+	background-color: #CCC;
+	margin-right: 4px;
+}
+</style>
+</head>
+<body>
+	<div>选几星：</div>
+	<ul class="star">
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+</body>
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title></title>
+<script type="text/javascript">
+	var isclick = false;
+	function initEvent() {
+		var tableWjx = document.getElementById("tableWjx");
+		var tds = tableWjx.getElementsByTagName("td");
+		for (var i = 0; i < tds.length; i++) {
+			var td = tds[i];
+			td.onmouseover = change;
+			td.onmouseout = repeal;
+			td.onclick = change1;
+		}
+	}
+	function change() {
+		if (!isclick) {
+			var tableWjx = document.getElementById("tableWjx");
+			var tds = tableWjx.getElementsByTagName("td");
+			var index = indexof(tds, this);
+			for (var i = 0; i < index + 1; i++) {
+				var td = tds[i];
+				td.innerHTML = "<img src='images/star1.png' class='img-rounded'>";
+			}
+		}
+	}
+	function repeal() {
+		if (!isclick) {
+			var tableWjx = document.getElementById("tableWjx");
+			var tds = tableWjx.getElementsByTagName("td");
+			var index = indexof(tds, this);
+			for (var i = 0; i < index + 1; i++) {
+				var td = tds[i];
+				td.innerHTML = "<img src='images/star2.png' class='img-rounded'>";
+			}
+		}
+	}
+	function indexof(arr, ele) {
+		for (var i = 0; i < arr.length; i++) {
+			if (arr[i] == ele) {
+				return i;
+			}
+		}
+		return -1;
+	}
+	function change1() {
+		if (!isclick) {
+			change();
+			isclick = true;
+		} else {
+			alert("Sorry,You had clicked me!");
+		}
+	}
+</script>
+</head>
+<body onload="initEvent()">
+	<table id="tableWjx">
+		<tr>
+			<td><img src='images/star2.png' class='img-rounded'></td>
+			<td><img src='images/star2.png' class='img-rounded'></td>
+			<td><img src='images/star2.png' class='img-rounded'></td>
+			<td><img src='images/star2.png' class='img-rounded'></td>
+			<td><img src='images/star2.png' class='img-rounded'></td>
+		</tr>
+	</table>
+</body>
+</html>
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="utf-8">
+<title>11111</title>
+
+
+<link rel="stylesheet" href="css/bootstrap.min.css" />
+<link rel="stylesheet" href="css/order-form.css" />
+
+
+</head>
+
+<body>
+
+
+	<div id="star" data-score="5">
+	
+	<input id="hint" type="text" readonly="readonly"/>
+	</div>
+
+	<script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
+	<script type="text/javascript" src="js/base.js"></script>
+	<script type="text/javascript" src="js/jquery.raty.min.js"></script>
+	<script type="text/javascript">
+		$("#star").raty({
+			path: "img",
+			score: 5,
+			target: "#hint",
+		    click: function(score, evt) {
+		        alert('ID: ' + $(this).attr('id') + "\nscore: " + score + "\nevent: " + evt);
+		    }
+		});
+	</script>
+</body>
+</html>
+
+

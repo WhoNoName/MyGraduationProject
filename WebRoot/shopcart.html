@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>网上订餐系统购物车</title>
+
+<link rel="stylesheet" href="css/style.css" />
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/base.js"></script>
+<script type="text/javascript" src="js/header_title.js"></script>
+<script type="text/javascript" src="js/index_dishes_type.js"></script>
+<script type="text/javascript" src="js/index_select.js"></script>
+
+<style>
+
+	
+	 .shopcart_show_dishes{
+	 	min-height: 400px;
+	 	text-align: center;
+	 	margin: 50px auto;
+	 }
+     .shopcart_show_dishes table {
+        width:900px;
+        border:2px solid #aaa;
+        
+      }
+      table th, table td {
+        border:2px solid #aaa;
+        padding:10px;
+      }
+      th {
+        background-color:#1E90FF;
+      }
+      .shopcart_btn{
+     	width:900px;
+      	margin-top: 10px;
+      }
+      
+      .btn{
+      	width: 150px;
+      	margin: 0px 20px;
+      }
+</style>
+<script type="text/javascript">
+	$(function() {
+
+
+		//标题按钮
+		//搜索部分
+		//登录部分
+		head_search();
+
+	});
+	function continueShopping(){
+		
+		window.location.href="indextest.html";
+	}
+</script>
+</head>
+
+<body>
+	<header class="header">
+		<div class="ui-width">
+			<figure>
+				<a href="indextest.html" class="logo">网上订餐</a>
+			</figure>
+
+		
+			<nav>
+				<ul class="nav">
+					<li class="nav-item " id="order_index_button"><a
+						href="indextest.html" class="nav-link">首页</a></li>
+					<li class="nav-item " id="user_order_button"><a
+						href="indextest.html" class="nav-link">我的订单</a></li>
+
+				</ul>
+			</nav>
+			<div id="user_info" class="user-info-widget">
+				<div id="login_user_info" style="display: none;">
+					<ul class="login_info">
+						<li><a id="usermessage" href="#">&nbsp;username</a></li>
+					</ul>
+				</div>
+				<div id="logout_user_info">
+					<ul class="logout_info">
+						<li><a id="login" href="loginTest.html">&nbsp;登录/注册</a></li>
+					</ul>
+				</div>
+
+			</div>
+
+		</div>
+	</header>
+
+	<!-- 购物车主体 -->
+
+	<div class="shopcart_show_dishes">
+		<table>
+			<thead>
+				<tr>
+					<th>选择</th>
+					<th>名称</th>
+					<th>单价(元)</th>
+					<th>数量</th>
+					<th>金额(元)</th>
+					<th>删除</th>
+				</tr>
+			</thead>
+
+
+			<tbody id="goods">
+
+			</tbody>
+
+
+			<tfoot>
+				<tr>
+					<td></td>
+					<td colspan="3" align="right">总计</td>
+					<td id="total"></td>
+					<td></td>
+				</tr>
+			</tfoot>
+		</table>
+		<div class="shopcart_btn">
+				
+					
+						<input onclick="clearCart()" type="button" value="清空购物车" class="btn"/>
+					
+						<input onclick="deleteSelectedItem()" type="button" value="删除所选项" class="btn"/>
+					
+						<input onclick="continueShopping();" type="button" value="继续购物" class="btn"/>
+					
+						<input onclick="checkout()" type="button" value="生成订单" class="btn"/>
+				
+			</div>
+	</div>
+
+
+	<footer id="orderfoot">
+
+				<ul>
+					<li><a href="merchant.do" target="_blank">商户中心</a></li>
+					<li>管理热线：<em>1111111111111111</em> <span>&nbsp;&nbsp;&nbsp;&nbsp;工作时间：周一至周日10:00-22:00</span>
+					</li>
+					<li>Design by WJX</li>
+				</ul>
+
+			</footer>
+</body>
+</html>

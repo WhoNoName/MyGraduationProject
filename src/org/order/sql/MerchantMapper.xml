@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="org.order.dao.MerchantDao">
+
+	<select id="findAllMerchant" resultType="org.order.entity.Merchant">
+		SELECT * FROM users u INNER JOIN
+		 (SELECT saller_id,SUM(dishes_sales) merchant_sales FROM dishes d GROUP BY saller_id ) s
+		  ON u.user_id=s.saller_id
+		  WHERE u.user_permission=3
+	</select>
+	
+	<select id="findMerchantByTypeId" parameterType="string"  resultType="org.order.entity.Merchant">
+		SELECT * FROM users u INNER JOIN
+		 (SELECT saller_id,SUM(dishes_sales) merchant_sales
+		  FROM dishes d GROUP BY saller_id ) s ON u.user_id=s.saller_id
+		  WHERE merchant_type=#{typeId} AND u.user_permission=3
+	</select>
+	
+	<select id="findMerchantOrderById" parameterType="string"  resultType="org.order.entity.Merchant">
+		SELECT * FROM users u INNER JOIN
+		 (SELECT saller_id,SUM(dishes_sales) merchant_sales
+		  FROM dishes d GROUP BY saller_id ) s ON u.user_id=s.saller_id
+		  WHERE merchant_type=#{typeId} AND u.user_permission=3
+          ORDER BY u.user_id
+	</select>
+	
+	<select id="findAllMerchantOrderById" resultType="org.order.entity.Merchant">
+		SELECT * FROM users u INNER JOIN
+		 (SELECT saller_id,SUM(dishes_sales) merchant_sales
+		  FROM dishes d GROUP BY saller_id ) s ON u.user_id=s.saller_id
+		  WHERE u.user_permission=3
+          ORDER BY u.user_id
+	</select>
+	
+	<select id="findMerchantOrderBySales" parameterType="string"  resultType="org.order.entity.Merchant">
+		SELECT * FROM users u INNER JOIN
+		 (SELECT saller_id,SUM(dishes_sales) merchant_sales
+		  FROM dishes d GROUP BY saller_id ) s ON u.user_id=s.saller_id
+		  WHERE merchant_type=#{typeId} AND u.user_permission=3
+          ORDER BY s.merchant_sales DESC
+	</select>
+	
+	<select id="findAllMerchantOrderBySales" resultType="org.order.entity.Merchant">
+		SELECT * FROM users u INNER JOIN
+		 (SELECT saller_id,SUM(dishes_sales) merchant_sales
+		  FROM dishes d GROUP BY saller_id ) s ON u.user_id=s.saller_id
+		  WHERE u.user_permission=3
+          ORDER BY s.merchant_sales DESC
+	</select>
+	
+	<select id="findMerchantOrderByTime" parameterType="string"  resultType="org.order.entity.Merchant">
+		SELECT * FROM users u INNER JOIN
+		 (SELECT saller_id,SUM(dishes_sales) merchant_sales
+		  FROM dishes d GROUP BY saller_id ) s ON u.user_id=s.saller_id
+		  WHERE merchant_type=#{typeId} AND u.user_permission=3
+          ORDER BY u.avg_time
+	</select>
+	
+	<select id="findAllMerchantOrderByTime" resultType="org.order.entity.Merchant">
+		SELECT * FROM users u INNER JOIN
+		 (SELECT saller_id,SUM(dishes_sales) merchant_sales
+		  FROM dishes d GROUP BY saller_id ) s ON u.user_id=s.saller_id
+		  WHERE u.user_permission=3
+          ORDER BY u.avg_time
+	</select>
+	
+	<select id="findMerchantOrderByScore" parameterType="string"  resultType="org.order.entity.Merchant">
+		SELECT * FROM users u INNER JOIN
+		 (SELECT saller_id,SUM(dishes_sales) merchant_sales
+		  FROM dishes d GROUP BY saller_id ) s ON u.user_id=s.saller_id
+		  WHERE merchant_type=#{typeId} AND u.user_permission=3
+          ORDER BY u.score DESC
+	</select>
+	
+	<select id="findAllMerchantOrderByScore" resultType="org.order.entity.Merchant">
+		SELECT * FROM users u INNER JOIN
+		 (SELECT saller_id,SUM(dishes_sales) merchant_sales
+		  FROM dishes d GROUP BY saller_id ) s ON u.user_id=s.saller_id
+		  WHERE u.user_permission=3
+          ORDER BY u.score DESC
+	</select>
+	
+	<select id="findMerchantByScanner" parameterType="string"  resultType="org.order.entity.Merchant">
+		SELECT * FROM users u INNER JOIN
+		 (SELECT saller_id,SUM(dishes_sales) merchant_sales
+		  FROM dishes d GROUP BY saller_id ) s ON u.user_id=s.saller_id
+		  WHERE u.user_permission=3 AND u.user_name LIKE "%"#{userName}"%"         
+	</select>
+	
+	<select id="findMerchantByMerchantId" parameterType="string"  resultType="org.order.entity.Merchant">
+		SELECT user_id,user_name,user_picture_url,dishes_address,phone_num,score,avg_time,s.merchant_sales,type_des FROM users u INNER JOIN
+		 (SELECT saller_id,SUM(dishes_sales) merchant_sales
+		  FROM dishes d GROUP BY saller_id ) s ON u.user_id=s.saller_id INNER JOIN
+		 (SELECT type_id,type_des FROM merchant_type) t ON u.merchant_type=t.type_id
+		  WHERE u.user_permission=3 AND u.user_id=#{merchantId}       
+	</select>
+</mapper>

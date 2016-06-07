@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>网上订餐系统</title>
+
+<link rel="stylesheet" href="css/style.css" />
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/base.js"></script>
+<script type="text/javascript" src="js/header_title.js"></script>
+<script type="text/javascript" src="js/index_dishes_type.js"></script>
+<script type="text/javascript" src="js/index_select.js"></script>
+<script type="text/javascript" src="js/cookie_util.js"></script>
+
+<script type="text/javascript">
+	$(function() {
+	
+	/* 	//检测用户
+		var userId = getCookie("userId");
+		console.log("cookie:"+userId.toString());
+		if(userId != null){
+			$.ajax({
+				url : schema_url + "/checkLoadUser.do",
+				type : "post",
+				data : {"userId":userId},
+				dataType : "json",
+				success : function(result) {
+					if (result.status == 0) {
+						console.log(result.data)
+						$("#logout_user_info").hide();
+						$("#usermessage").html(result.data);
+						$("#login_user_info").show();
+					}
+				},
+				error : function(){
+					alert("失败");
+				}
+			});
+		} */
+	
+		//主页加载
+		loadIndexThings();
+		
+		//手气
+		//选择菜品类型
+		index_things();
+
+		//标题按钮
+		//搜索部分
+		//登录部分
+		head_search();
+		
+		//排序按钮
+		select_btn();
+	});
+</script>
+</head>
+
+<body>
+	<header class="header">
+		<div class="ui-width">
+			<figure>
+				<a href="indextest.html" class="logo">网上订餐</a>
+			</figure>
+
+			<div class="search">
+				<input type="text" id="sinput" class="sinput placeholder-con"
+					value="     搜索商品"> <a href="#" id="f-close-btn"
+					title="搜索" class="search-btn hide"><img
+					src="images/search_icon.png"></img></a>
+
+				<div class="f-search-list"></div>
+			</div>
+			<nav>
+				<ul class="nav">
+					<li class="nav-item " id="order_index_button"><a
+						href="indextest.html" class="nav-link">首页</a></li>
+					<li class="nav-item " id="user_order_button"><a
+						href="indextest.html" class="nav-link">我的订单</a></li>
+
+				</ul>
+			</nav>
+			<div id="user_info" class="user-info-widget">
+				<div id="login_user_info" style="display: none;">
+					<ul class="login_info">
+						<li><a id="usermessage" href="#"></a></li>
+					</ul>
+				</div>
+				<div id="logout_user_info" >
+					<ul class="logout_info">
+						<li><a id="login" href="loginTest.html">&nbsp;登录/注册</a></li>
+					</ul>
+				</div>
+
+			</div>
+
+		</div>
+	</header>
+
+	<!-- 首页主体 -->
+	<div class="index_body">
+		<div class="index_body_box all_show_table">
+
+			<div class="index_dishes_type">
+
+				<table>
+					<td class="width20"><select id="selectDishesType">
+							<option selected="selected">&nbsp;&nbsp;&nbsp;&nbsp;-------全部-------</option>
+					</select><span><td ><input class="btn type_sure" type="button" value="确定"
+						id="index_dishes_type_sure" /></td></span></td>
+					<td class="width20"><input type="button" value="吃啥"
+						id="index_dishes_random" /></td>
+					<td id="show_random_details"></td>
+					<td class="width15"><img type="button" value="谁取外卖"
+							id="index_dishes_random_btn" src="images/wp.png"></td>
+				</table>
+
+			</div>
+
+			<div class="index_dishes_orderbutton">
+
+				<table class="width70">
+					<tr>
+						<td><input id="btn1" type="button" class="btn"
+							value="按默认排序" /></td>
+						<td><input id="btn2" type="button" class="btn"
+							value="按销量排序" /></td>
+						<td><input id="btn3" type="button" class="btn"
+							value="按送餐速度排序" /></td>
+						<td><input id="btn4" type="button" class="btn"
+							value="按评分排序" /></td>
+						<td><input id="btn5" type="button" class="btn"
+							value="购物车" /></td>
+					</tr>
+				</table>
+			</div>
+
+			<div class="index_show_dishes">
+				<!-- background-->
+				<div class="alert_bg" style="display:none"></div>
+				<!-- alerts -->
+				<div id="alerts" >
+				<div class="modal fade in" id="alert_who"style="display:none" >
+				<div class="modal_dialog">
+					<div class="modal_content">
+						<div class="modal-header">
+							<input type="button" class="modal_title close" value="×"/>
+							<h4 class="modal_title mh4" >看看手气</h4>
+							<div class="clear"></div>
+						</div>
+						<div class="modal_footer" >
+							<input type="button" class="btn" id="sure_try" value="试试手气"/>
+						</div>
+							<div class="modal_body">
+								<div class="form_id" id="id_and_num">
+									<!-- 动态生成 -->
+	                            </div>
+							</div>
+					</div>
+				</div>
+			</div>
+				</div>
+					
+
+				<div id="show_float_dishes" class="float_dishes">
+					<!-- 动态生成 -->
+				</div>
+				<div class="clear"></div>
+
+
+
+			</div>
+		</div>
+	</div>
+
+
+
+	<footer id="orderfoot">
+
+		<ul>
+			<li><a href="merchant.do" target="_blank">商户中心</a></li>
+			<li>管理热线：<em>1111111111111111</em> <span>&nbsp;&nbsp;&nbsp;&nbsp;工作时间：周一至周日10:00-22:00</span>
+			</li>
+			<li>Design by WJX</li>
+		</ul>
+
+
+	</footer>
+</body>
+</html>

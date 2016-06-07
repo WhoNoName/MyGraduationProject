@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="utf-8">
+<title>网上订餐系统</title>
+
+<link type="text/css" rel="stylesheet" media="screen"
+	href="css/bootstrap.min.css" />
+<link rel="stylesheet" href="css/merchant-styles.css" />
+
+
+</head>
+
+<body>
+
+	<!-- 顶部菜单条 -->
+	<header class="header">
+		<div class="ui-width">
+			<figure>
+				<a href="toIndex.do" class="logo">网上订餐</a>
+			</figure>
+
+			<div class="search">
+				<input type="text" id="sinput" class="sinput placeholder-con"
+					value="     搜索店铺"> <a href="JavaScript:void(0)"
+					id="f-close-btn" title="搜索" class="search-btn"> <img alt="搜索"
+					src="images/search_icon.png" /></a>
+
+				<div class="f-search-list"></div>
+			</div>
+			<nav>
+				<ul class="navigat">
+					<li class="nav-item " id="order_index_button"><a
+						href="toIndex.do" class="nav-link"> 首页</a></li>
+					<li class="nav-item " id="sales_rank"><a href="toIndex.do"
+						class="nav-link">排行榜</a></li>
+					<li class="nav-item " id="user_order_button"><a
+						href="toIndex.do" class="nav-link">我的订单</a></li>
+					<li class="nav-item " id="merchant_entry" style="display: none;"><a
+						href="toMerchantLogin.do" class="nav-link">商家入口</a></li>
+				</ul>
+			</nav>
+			<div id="user_info" class="user-info-widget">
+				<div id="login_user_info">
+					<ul class="login_info">
+						<li><a class="user_test usermessage title_btn"
+							href="JavaScript:void(0)">username</a></li>
+
+						<li><a class="user_test btn_personal title_btn"
+							href="/profile"> <span class="glyphicon glyphicon-user"
+								aria-hidden="true"></span>&nbsp;个人中心
+						</a></li>
+						<li><a class="user_test btn_logout title_btn"
+							href="JavaScript:"> <span class="glyphicon glyphicon-off"
+								aria-hidden="true"></span>&nbsp;退出登录
+						</a></li>
+
+
+					</ul>
+				</div>
+
+
+				<div id="logout_user_info" style="display: none;">
+					<ul class="logout_info">
+						<li><a id="login" href="toLogin.do">&nbsp;登录|注册</a></li>
+					</ul>
+				</div>
+
+			</div>
+
+		</div>
+	</header>
+
+
+	<!-- 主体 -->
+	<div class="index_body">
+		<div class="index_body_box all_show_table">
+
+			<div class="index_dishes_type">
+
+				<table class="merchant_show_table">
+
+				</table>
+
+			</div>
+
+					<div class="index_dishes_orderbutton">
+
+				<table class="col-md-7">
+					<tr>
+						<td><button id="btn1" type="button"
+								class="btn show_type_checked index_order_btn" value="按默认排序">
+								按默认排序<span class="glyphicon glyphicon-triangle-top"
+									aria-hidden="true"></span>
+							</button></td>
+						<td><button id="btn2" type="button"
+								class="btn index_order_btn" value="按销量排序">
+								按销量排序<span class="glyphicon glyphicon-triangle-bottom"
+									aria-hidden="true"></span>
+							</button></td>
+						<td><button id="btn3" type="button"
+								class="btn index_order_btn" value="按速度排序">按速度排序
+								<span class="glyphicon glyphicon-triangle-top"
+									aria-hidden="true"></span>
+							</button></td>
+						<td><button id="btn4" type="button"
+								class="btn index_order_btn" value="按评分排序">按评分排序
+								<span class="glyphicon glyphicon-triangle-bottom"
+									aria-hidden="true"></span>
+							</button></td>
+
+						
+					</tr>
+				</table>
+			</div>
+
+
+			<div class="index_show_dishes">
+				<!-- background-->
+				<div class="alert_bg" style="display:none"></div>
+				<!-- alerts -->
+				<div id="alerts">
+                	<div class="shop_cart"> 
+                    <a href="JavaScript:void(0)">
+                    	
+                    	<div>
+                          <img class="pic_cart" id='shop_cart' alt='购物车' src="img/gwc2.png" />
+                          <img  class="pic_yen" src="img/rmb1.png" alt=""/>
+                      	</div>
+                        <span class="badge shop_dishes_num">0</span>
+                      	<span class="shop_fee">0</span>
+                        </a>
+                    </div>
+                    
+                    <div class="modal" id="alert_shop_cart" style="display:none">
+				      <div class="modal-dialog">
+				        <div class="modal-content">
+				          <div class="modal-header">
+				            <button type="button" class="close" data-dismiss="modal">
+                            <span aria-hidden="true" class="close">×</span>
+                            <span class="sr-only">Close</span></button>
+				            <h4 class="modal-title">购物车</h4>
+                            <a class="clear_cart" href="JavaScript:void(0)">[清空购物车]</a>
+				          </div>
+				          <div class="modal-body user_shop_cart">
+							<table id="cartTable"  class="cart table" >  
+                                <thead>  
+                                    <tr>  
+                                     	
+                                        <th class="width50"><label>产品型号</label></th>                                  
+                                        <th class="width10"><label>单价</label></th>  
+                                        <th class="width30"><label>数量</label></th>  
+                                        <th class="width10"><label></label></th> 
+                                    </tr>  
+                                </thead> 
+                                
+                                <tbody class="load_db_cart">  
+                                    <tr >  
+                                       
+                                        <td class="goods ">  
+                                            <label>Item 1</label>  
+                                        </td>  
+                                        <td class="small-bold-red "><span>76.55</span></td>  
+                                        <td class="input-group ">  
+                                            <button class="input-group-addon minus">-</button>  
+                                            <input type="text" class="number" value="11" />  
+                                            <button class="input-group-addon plus">+</button>  
+                                        </td>  
+                                       
+                                        <td class="operation"><span aria-hidden="true" class="delete">x</span></td>  
+                                    </tr>  
+                                    <tr>  
+                                       
+                                        <td class="goods">  
+                                            <label>Item 2</label>  
+                                        </td>  
+                                        <td class=" small-bold-red"><span>1100</span></td>  
+                                        <td class="input-group">  
+                                            <button class="input-group-addon minus">-</button>  
+                                            <input type="text" class="number" value="1" />  
+                                            <button class="input-group-addon plus">+</button>  
+                                        </td>  
+                                     
+                                        <td class="operation"><span aria-hidden="true" class="delete">x</span></td>  
+                                    </tr>  
+                                    <tr>  
+                                       
+                                        <td class="goods">  
+                                            <label>Item 3</label>  
+                                        </td>  
+                                        <td class=" small-bold-red"><span>1200</span></td>  
+                                        <td class="input-group">  
+                                            <button class="input-group-addon minus">-</button>  
+                                            <input type="text" class="number" value="1" />  
+                                            <button class="input-group-addon plus">+</button>  
+                                        </td>  
+                                        
+                                        <td class="operation"><span aria-hidden="true" class="delete">x</span></td>  
+                                    </tr>  
+                                    <tr>  
+                                       
+                                        <td class="goods">  
+                                            <label>Item 4</label>  
+                                        </td>  
+                                        <td class=" small-bold-red"><span>1400</span></td>  
+                                        <td class="input-group">  
+                                            <button class="input-group-addon minus">-</button>  
+                                            <input type="text" class="number" value="1" />  
+                                            <button class="input-group-addon plus">+</button>  
+                                        </td>  
+                                        
+                                        <td class="operation"><span aria-hidden="true" class="delete">x</span></td>  
+                                    </tr>  
+                                </tbody>  
+                            </table>  
+                          
+                            <div class="row">  
+                                <div class="col-md-12 col-lg-12 col-sm-12">  
+                                    <div >  
+                                        <div class="pull-right total">  
+                                            <label>金额合计:
+                                            <span class="currency">￥</span>
+                                            <span id="priceTotal" class="large-bold-red">0.00</span></label>  
+                                        </div>  
+                                       
+                                        <div class="pull-right selected" id="selected">  
+                                            <span id="selectedTotal"></span>  
+                                        </div>  
+                                    </div>  
+                                </div>  
+                            </div>  
+				          </div>
+				          <div class="modal-footer">
+                          	
+				            <button type="button" class="btn btn-default" id="btn_order_commit" >结算</button>
+				            <button type="button" class="btn btn-default btn_close ">再看看</button>
+				          </div>
+				        </div>
+				      </div>
+                    </div>
+				</div>
+
+
+				<div id="show_float_dishes" class="float_dishes">
+					<!-- 动态生成 -->
+                    
+                    <div class="col-md-3 product" data-dishesid="0001"  >
+                    	<table >
+                          <tbody>
+                            <tr >
+                              <td >
+                                  <p><img class='dishes_pic' alt='图片' src='images/500001.jpg'/></p>
+                              </td>
+                              <td >
+                              	  <p class="dishes_name">菜品名aaa</p>
+                              	  <p class="dishes_price"><img src="img/rmb_red.png" alt=""/><em>111</em></p>
+                              	  <p>销量：</p>
+                                  <p>评分：</p>
+                                  <p>
+                                  <button class="btn btn-primary btn-xs addCart"  >加入购物车</button>
+                                  </p>
+
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="col-md-3 product" data-dishesid="0002"  >
+                    	<table >
+                          <tbody>
+                            <tr >
+                              <td >
+                                  <p><img class='dishes_pic' alt='图片' src='images/500023.jpg' /></p>
+                              </td>
+                              <td >
+                              	  <p class="dishes_name">菜品名bbb</p>
+                              	  <p class="dishes_price"><img src="img/rmb_red.png" alt=""/><em>1</em></p>
+                              	  <p>销量：</p>
+                                  <p>评分：</p>
+                                  <p><button class="btn btn-primary btn-xs addCart"  >加入购物车</button></p>
+
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="col-md-3 product" data-dishesid="0003"  >
+                    	<table >
+                          <tbody>
+                            <tr >
+                              <td >
+                                  <p><img class='dishes_pic' alt='图' src='images/500024.jpg' /></p>
+                              </td>
+                              <td >
+                              	  <p class="dishes_name">菜品名ccc</p>
+                              	  <p class="dishes_price"><img src="img/rmb_red.png" alt=""/><em>11</em></p>
+                              	  <p>销量：</p>
+                                  <p>评分：</p>
+                                  <p><button class="btn btn-primary btn-xs addCart"  >加入购物车</button></p>
+
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="col-md-3 product" data-dishesid="0004"  >
+                    	<table >
+                          <tbody>
+                            <tr >
+                              <td >
+                                  <p><img class='dishes_pic' alt='图' src='images/500025.jpg' /></p>
+                              </td>
+                              <td >
+                              	  <p class="dishes_name">菜品名ddd</p>
+                              	  <p class="dishes_price"><img src="img/rmb_red.png" alt=""/><em>9.9</em></p>
+                              	  <p>销量：</p>
+                                  <p>评分：</p>
+                                  <p><button class="btn btn-primary btn-xs addCart" >加入购物车</button></p>
+
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="col-md-3 product" >
+                    	<table >
+                          <tbody>
+                            <tr >
+                              <td >
+                                  <p><img class='dishes_pic' alt='图' src='' /></p>
+                              </td>
+                              <td >
+                              	  <p>菜品名</p>
+                              	  <p>Price:<em>11111.111</em></p>
+                              	  <p>销量：</p>
+                                  <p>评分：</p>
+                                  <p><button class="btn btn-primary btn-xs" >加入购物车</button></p>
+
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="col-md-3 product" >
+                    	<table >
+                          <tbody>
+                            <tr >
+                              <td >
+                                  <p><img class='dishes_pic' alt='图' src='' /></p>
+                              </td>
+                              <td >
+                              	  <p>菜品名</p>
+                              	  <p>Price:<em>11111.111</em></p>
+                              	  <p>销量：</p>
+                                  <p>评分：</p>
+                                  <p><button class="btn btn-primary btn-xs" >加入购物车</button></p>
+
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="col-md-3 product" >
+                    	<table >
+                          <tbody>
+                            <tr >
+                              <td >
+                                  <p><img class='dishes_pic' alt='图' src='' /></p>
+                              </td>
+                              <td >
+                              	  <p>菜品名</p>
+                              	  <p>Price:<em>11111.111</em></p>
+                              	  <p>销量：</p>
+                                  <p>评分：</p>
+                                  <p><button class="btn btn-primary btn-xs" >加入购物车</button></p>
+
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                    </div>
+                    
+                                        <div class="col-md-3 product" >
+                    	<table >
+                          <tbody>
+                            <tr >
+                              <td >
+                                  <p><img class='dishes_pic' alt='图' src='' /></p>
+                              </td>
+                              <td >
+                              	  <p>菜品名</p>
+                              	  <p>Price:<em>11111.111</em></p>
+                              	  <p>销量：</p>
+                                  <p>评分：</p>
+                                  <p><button class="btn btn-primary btn-xs" >加入购物车</button></p>
+
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                    </div>
+                    
+                                        <div class="col-md-3 product" >
+                    	<table >
+                          <tbody>
+                            <tr >
+                              <td >
+                                  <p><img class='dishes_pic' alt='图' src='' /></p>
+                              </td>
+                              <td >
+                              	  <p>菜品名</p>
+                              	  <p>Price:<em>11111.111</em></p>
+                              	  <p>销量：</p>
+                                  <p>评分：</p>
+                                  <p><button class="btn btn-primary btn-xs" >加入购物车</button></p>
+
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                    </div>
+                    
+                                        <div class="col-md-3 product" >
+                    	<table >
+                          <tbody>
+                            <tr >
+                              <td >
+                                  <p><img class='dishes_pic' alt='图' src='' /></p>
+                              </td>
+                              <td >
+                              	  <p>菜品名</p>
+                              	  <p>Price:<em>11111.111</em></p>
+                              	  <p>销量：</p>
+                                  <p>评分：</p>
+                                  <p><button class="btn btn-primary btn-xs" >加入购物车</button></p>
+
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                    </div>                                                                                                                         
+                  
+
+                    
+				</div>
+				<div class="clear"></div>
+
+
+
+			</div>
+		</div>
+	</div>
+
+
+
+	<div id="orderfoot">
+		<ul>
+			<li><a href="merchant.do" target="_blank"><span
+					class="glyphicon glyphicon-home" aria-hidden="true"></span>&nbsp;商户中心</a>
+			</li>
+			<li><span class="glyphicon glyphicon-phone-alt"
+				aria-hidden="true"></span>&nbsp; 管理热线：<em>1111111111111111</em> <span>&nbsp;&nbsp;&nbsp;&nbsp;
+					<span class="glyphicon glyphicon-time" aria-hidden="true"> </span>&nbsp;工作时间：周一至周日10:00-22:00
+			</span></li>
+			<li><span class="glyphicon glyphicon-pencil" aria-hidden="true">
+			</span>&nbsp; Design by WJX</li>
+		</ul>
+	</div>
+
+
+	<script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/base.js"></script>
+	<script type="text/javascript" src="js/header_title.js"></script>
+	<script type="text/javascript" src="js/index_dishes_type.js"></script>
+	<script type="text/javascript" src="js/index_select.js"></script>
+	<script type="text/javascript" src="js/cookie_util.js"></script>
+
+	<script type="text/javascript">
+		//header
+		//登录部分
+		head_things();
+		
+		
+		$(function() {
+			total();
+			dishesnum_total();
+		var cartNum=0;
+		
+		$.extend({
+		getRequestParameter:function(name){
+			var url = window.location.search,reg,retVal;
+			/*
+			 * 其中正则详解：
+			 * (^\?|&)以？或者&开头的字符
+			 * name是传进来的参数名
+			 * =([^&]*)(&|$)表示=后面&前面或者到结束的非&的0+个字符
+			 * 通过()组合方式，并且不把RegExp设置为全局g，可以通过match方法返回匹配到的字符串和pattern数组
+			 * */
+			return name?(reg = new RegExp("(^\\?|&)"+name+"=([^&]*)(&|$)"),retVal = url.match(reg),$.isArray(retVal)&&retVal.length>=3?
+					retVal[2]:''):'';
+		}
+		});
+		var merchantId = $.getRequestParameter("id");
+		//商家信息加载
+	/*	$.ajax({url : schema_url + "/loadmerchantinfo.do",
+				type : "post",
+				data : {"merchantId":merchantId},
+				dataType : "json",
+				success : function(result) {
+					if (result.status == 0) {
+						var dishes = result.data;
+						
+							var merchantName = dishes.user_name;
+							var merchantImg = dishes.user_picture_url;
+							var merchantSales = dishes.merchant_sales;
+							var merchantAvgTime = dishes.avg_time;
+							var merchantScore = dishes.score;
+							var merchantAdd = dishes.dishes_address;
+							var merchantType = dishes.type_des;
+							var merchantPhoneNum = dishes.phone_num;
+							$("title").html(merchantName); 
+							var dt = "<tr><td rowspan='3' >";
+							dt +="<img	class='merchant_picture' alt='' src='";
+							dt += merchantImg;
+							dt += "' /></td><td>名称：";
+							dt +=merchantName;
+							dt +="</td>	<td>销量：";
+							if (merchantSales == null || merchantSales == "") {
+								dt += "暂无";
+							} else {
+								
+								dt += merchantSales;
+							}
+							dt +="</td><td rowspan='3'>地址：";
+							dt +=merchantAdd;
+							dt +="</td></tr><tr><td>类型：";
+							dt +=merchantType;
+							dt +="</td><td>评分：";
+							dt +=merchantScore;
+							dt +="</td></tr><tr><td>平均送餐时间：";
+							if (merchantAvgTime == null || merchantAvgTime == "") {
+								dt += "暂无";
+							} else {
+								
+								dt += merchantAvgTime;
+							}
+							dt +="</td><td>电话：";
+							dt +=merchantPhoneNum;
+							dt +="</td></tr>";
+							var $ta = $(dt);
+							
+							$(".merchant_show_table").append($ta);
+						
+
+					}
+				},
+				error : function() {
+					alert("加载内容失败");
+				}
+
+			});
+		
+		//菜品加载
+		$.ajax({
+		url : schema_url + "/loaddishesbymerchantid.do",
+		type : "post",
+		data : {"merchantId":merchantId},
+		dataType : "json",
+		success : function(result) {
+			if (result.status == 0) {
+				var dishes = result.data;
+				update_dishes(dishes);
+			}
+		},
+		error : function() {
+			alert("获取失败");
+		}
+	});*/
+		
+		//手气
+		//选择菜品类型
+		index_things();
+
+		//吃啥显示
+		$("#index_dishes_random").click(randomDishes);
+
+		//默认排序
+		$("#btn6").click(function(){
+		console.log('btn6');
+		$(".index_dishes_orderbutton input").removeClass("show_type_checked");
+		$(this).addClass("show_type_checked");
+		$.ajax({
+			url : schema_url + "/loaddishesbymerchantid.do",
+			type : "post",
+			data : {"merchantId":merchantId},
+			dataType : "json",
+			success : function(result) {
+				if (result.status == 0) {
+					$("#show_float_dishes").empty();
+					var dishes = result.data;
+						update_dishes(dishes);
+				}
+			},
+			error : function() {
+				alert("加载内容失败");
+			}
+
+		});
+	});
+	
+	//按销售量显示
+	$("#btn7").click(function(){
+		$(".index_dishes_orderbutton input").removeClass("show_type_checked");
+		$(this).addClass("show_type_checked");
+		console.log('btn7');
+		$.ajax({
+			url : schema_url + "/loaddishesbymerchantidorderbysales.do",
+			type : "post",
+			data : {"merchantId":merchantId},
+			success : function(result) {
+				if (result.status == 0) {
+					$("#show_float_dishes").empty();
+					var dishes = result.data;
+						update_dishes(dishes);
+				} 
+			},
+			error : function() {
+				alert("加载内容失败");
+			}
+
+		});
+	});
+	
+	
+	
+	
+	
+	//按评分排序
+	$("#btn8").click(function(){
+		$(".index_dishes_orderbutton input").removeClass("show_type_checked");
+		$(this).addClass("show_type_checked");
+		console.log('btn8');
+		$.ajax({
+			url : schema_url + "/loaddishesbymerchantidorderbyscore.do",
+			type : "post",
+			data : {"merchantId":merchantId},
+			dataType : "json",
+			success : function(result) {
+				if (result.status == 0) {
+					$("#show_float_dishes").empty();
+					var dishes = result.data;
+						update_dishes(dishes);
+				} 
+			},
+			error : function() {
+				alert("加载内容失败");
+			}
+
+		});
+	});
+	
+	
+	//按价格排序
+	$("#btn9").click(function(){
+		$(".index_dishes_orderbutton input").removeClass("show_type_checked");
+		$(this).addClass("show_type_checked");
+		
+		console.log('btn9');
+		$.ajax({
+			url : schema_url + "/loaddishesbymerchantidorderbyprice.do",
+			type : "post",
+			data : {"merchantId":merchantId},
+			dataType : "json",
+			success : function(result) {
+				if (result.status == 0) {
+					$("#show_float_dishes").empty();
+					var dishes = result.data;
+						update_dishes(dishes);
+				} 
+			},
+			error : function() {
+				alert("加载内容失败");
+			}
+
+		});
+		});
+		
+		//菜品类型选项
+		$(".bar_one a").click(merchantType);
+		
+		
+		//购物车部分
+		$(".addCart").on("click",function(){
+		
+			
+			var addImg = $(this).parent().parent().prev().find("img").eq(0);
+			var shopCart =$('.pic_cart');
+			
+			//获取菜品id
+			var dishesId = $(this).parents(".product").data("dishesid");	
+	
+			var dishesName = $(this).parent().siblings(".dishes_name").text();
+			var dishesPrice = $(this).parent().siblings(".dishes_price").text();
+			
+			var shopTotal = $(".shop_fee").text();
+			
+			var newTotal = eval(shopTotal+"+"+dishesPrice);
+
+			//按id
+			
+			//本地数据库
+			initDatabase();
+			var db = getCurrentDb();
+
+
+			//添加到购物车操作			
+			db.transaction(function (trans) {
+                trans.executeSql("select * from shopcart where dishesid=? ", [dishesId], function (ts, data) {
+					
+					
+					if (data) {
+                        for (var i = 0; i < data.rows.length; i++) {
+							
+                            addDishes(data.rows.item(i),dishesId);//获取某行数据的json对象
+							return false;
+                        }
+						
+						
+                    	//执行sql脚本，插入数据
+						db.transaction(function (trans) {
+							trans.executeSql("insert into shopcart(dishesid,dishesname,price,num) values(?,?,?,?) ", [dishesId, dishesName, dishesPrice,1], function (ts, data) {
+							}, function (ts, message) {
+								alert(message);
+							});
+						});
+                    }
+
+					
+					}, function (ts,message){
+						alert(message);
+					})
+        });
+			
+		
+		
+			
+			
+			
+			
+			//克隆图片
+			var cloneImg = addImg.clone();
+			cloneImg.css({
+				'width':'100px',
+				'height':'80px',
+				'position':'absolute',
+				'top':addImg.offset().top+10,
+				'left':addImg.offset().left+10,
+				'z-index':'1000',
+				'opacity':'.5'
+			}).appendTo($('body')).animate({
+				'width':'10px',
+				'height':'10px',
+				'top':shopCart.offset().top+8,
+				'left':shopCart.offset().left+14,
+				
+			},400,function(){
+				cloneImg.animate({
+				'width':0,
+				'height':0
+				},function(){
+					total();
+					dishesnum_total();
+					$(this).detach();
+					
+				});
+			});
+			
+			
+			
+		});
+		
+		
+		//点击购物车
+		$(".shop_cart").click(function(){
+
+			$("#alert_shop_cart").show();
+			$(".alert_bg").show();
+	
+			
+			$(".close").click(function() {
+				$("#alert_shop_cart").hide();
+				$(".alert_bg").hide();	
+				
+			});
+			
+			$(".btn_close").click(function() {			
+				$("#alert_shop_cart").hide();
+				$(".alert_bg").hide();
+				
+			});
+				
+			$("#btn_order_sure").click(function() {
+	
+				$("#alert_shop_cart").hide();
+				$(".alert_bg").hide();
+				return false;
+			});
+			
+			$(".clear_cart").click(function() {
+				deleteDbTable();
+				$(".load_db_cart").empty();
+				$(".shop_dishes_num").html("0");
+				$(".shop_fee").html("0");
+			});
+			
+			
+			$(".load_db_cart").empty();
+            var db = getCurrentDb();
+            db.transaction(function (trans) {
+                trans.executeSql("select * from shopcart ", [], function (ts, data) {
+                    if (data) {
+                        for (var i = 0; i < data.rows.length; i++) {
+                            show_shop_cart_list(data.rows.item(i));//获取某行数据的json对象
+                        }
+                    }
+                }, function (ts, message) {});
+            });
+			
+			/*$(".input-group .minus").click(function(){
+				console.log(1);
+				var cart_text = parseInt($(".input-group .number").text());
+				console.log(cart_text);
+				if(cart_text == 1){
+					return false;
+				}
+				
+				$(".input-group .number").text(cart_text-1);
+				
+			});*/
+
+		});
+
+	
+	});
+	
+
+	//更改显示
+function update_dishes(dishes){
+
+	for(var i=0;i<dishes.length;i++){
+					var st = "<table class='random_show_dishes'> <tr><td rowspan='3' class='width30'>";
+					st += "<img class='dishes_pic' alt='图' src='";
+					st += dishes[i].dishes_imgurl;
+					st += "' />";
+					st += "</td>";
+					st += "<td class='width40'>";
+					st += dishes[i].dishes_name;
+					st += "</td>";
+					st += "<td>￥";
+					st += dishes[i].dishes_price;
+					st += "</td>";
+					st += "</tr><tr><td>销量：";
+					if (dishes[i].dishes_sales == null || dishes[i].dishes_sales == "") {
+						st += "暂无";
+					} else {
+						st += dishes[i].dishes_sales;
+					}
+					
+					st += "</td><td rowspan='2'> <a href='#'>";
+					st += "<img class='dishes_click_btn' alt='' src='images/bar1.png' /></a></td></tr>";
+					st += "<tr><td>";
+					st += "评价：";
+					if ( dishes[i].dishes_score == null ||  dishes[i].dishes_score == "") {
+						st += "暂无";
+					} else {
+						st += dishes[i].dishes_score;
+					}
+					st += "</td></tr></table>";
+					
+					var $tabl = $(st);
+					$tabl.data("dishesId",dishes.dishes_id);
+					$("#show_float_dishes").append($tabl);
+				}
+
+		};
+		
+		function show_shop_cart_list(data){
+			
+			if(data.dishesid == null || data.dishesid == ""){
+				return false;	
+			}
+			
+			var dishesId = data.dishesid;
+			
+			var dishesName = data.dishesname;
+			var dishesPrice = data.price;
+			var dishesNum = data.num;
+			
+			var shopcartTd = "<tr><td class='goods'><label>";
+				shopcartTd += dishesName +"</label></td><td class=' small-bold-red'><span>";
+				shopcartTd += dishesPrice +"</span></td><td class='input-group'><button class='input-group-addon minus' onclick='decrease(this);'>";
+				shopcartTd += "-</button><input type='text' class='number' value='";
+				shopcartTd += dishesNum+"' />";
+				shopcartTd += "<button class='input-group-addon plus' onclick='increase(this);'>+</button></td>";
+				shopcartTd += "<td class='operation'><span aria-hidden='true' class='delete' onclick='del(this);'>x</span></td></tr>";
+				
+				var $tabl = $(shopcartTd);
+				$tabl.data("dishesId",dishesId);
+				$(".load_db_cart").append($tabl);
+		};
+		
+		
+		 function decrease(dtn){
+				
+				var dishesId = $(dtn).parent().parent().data("dishesId");
+
+				var cart_text = parseFloat($(dtn).next().val());
+			
+				if(cart_text == 1){
+					return false;
+				}
+				
+				$(dtn).next().val(cart_text-1.0+".0");
+				
+				//更新数据库
+				updateShopCart((cart_text-1.0),dishesId);
+	    	  	total();
+				dishesnum_total();
+    	}
+    	
+    	function increase(ptn){
+				var dishesId = $(ptn).parent().parent().data("dishesId");
+
+				var cart_text = parseFloat($(ptn).prev().val());
+			
+				if(cart_text == 99){
+					return false;
+				}
+				
+				$(ptn).prev().val(cart_text+1.0+".0");
+				
+				//更新数据库
+				updateShopCart((cart_text+1.0),dishesId);
+				total();
+				dishesnum_total();
+    	}
+    	
+    	function del(dtn){
+    		
+    		//更新数据库
+			var dishesId = $(dtn).parent().parent().data("dishesId");
+			var db = getCurrentDb();//初始化数据库
+            if(!db) {alert("您的浏览器不支持HTML5本地数据库");return;}	
+			
+			db.transaction(function (trans) {
+				trans.executeSql("delete from shopcart where dishesid=? ", [dishesId], function (ts, data) {
+					}, function (ts, message) {
+						alert(message);
+					});
+			});	
+			
+    		$(dtn).parent().parent().remove();
+			total();
+			dishesnum_total();
+    	}
+		
+    	function total(){
+			
+            var db = getCurrentDb();
+			var total = 0;
+			var price = 0;
+			var num = 0;
+            db.transaction(function (trans) {
+                trans.executeSql("select * from shopcart ", [], function (ts, data) {
+                    if (data) {
+                        for (var i = 0; i < data.rows.length; i++) {
+                            price = data.rows.item(i).price;
+							num = data.rows.item(i).num;
+							total += num*price;
+						
+                        }
+                    }	
+					
+					$(".shop_fee").html(total);
+					$("#priceTotal").html(total);
+                }, function (ts, message) {});
+            });
+
+			
+    	}
+		
+		
+		function dishesnum_total(){
+            var db = getCurrentDb();
+			var total = 0;
+			
+			var num = 0;
+            db.transaction(function (trans) {
+                trans.executeSql("select * from shopcart ", [], function (ts, data) {
+                    if (data) {
+                        for (var i = 0; i < data.rows.length; i++) {
+                          
+							num = parseFloat(data.rows.item(i).num);
+							total += num;
+                        }
+                    }
+					console.log(total);
+					$(".shop_dishes_num").html(total);
+                }, function (ts, message) {});
+            });
+			
+			
+    	}
+		
+		function initDatabase() {
+            var db = getCurrentDb();//初始化数据库
+            if(!db) {alert("您的浏览器不支持HTML5本地数据库");return;}
+            db.transaction(function (trans) {//启动一个事务，并设置回调函数
+                //执行创建表的Sql脚本
+                trans.executeSql("create table if not exists shopcart(dishesid text null,dishesname text null,price text null,num text null)", [], function (trans, result) {
+                }, function (trans, message) {//消息的回调函数alert(message);});
+					}, function (trans, result) {
+						}, function (trans, message) {
+							})
+			});
+		};
+		
+		function getCurrentDb() {
+            //打开数据库，或者直接连接数据库参数：数据库名称，版本，概述，大小
+            //如果数据库不存在那么创建之
+            var db = openDatabase("shopcart", "1.0", "it's to save cart data!", 1024 * 1024);
+            return db;
+        };
+		
+		function deleteDbTable() {
+            //删除表
+            var db = getCurrentDb();//初始化数据库
+            if(!db) {alert("您的浏览器不支持HTML5本地数据库");return;}
+            db.transaction(function (trans) {//启动一个事务，并设置回调函数
+                //执行创建表的Sql脚本
+                trans.executeSql("DROP TABLE shopcart", [], function (trans, result) {
+                }, function (trans, message) {//消息的回调函数alert(message);});
+					}, function (trans, result) {
+						}, function (trans, message) {
+							})
+			});
+        };
+		
+		
+		function addDishes(data,dishesId){
+			
+			var db = getCurrentDb();//初始化数据库
+            if(!db) {alert("您的浏览器不支持HTML5本地数据库");return;}	
+			if(data.dishesid == dishesId){
+					//执行sql脚本，修改数据
+						db.transaction(function (trans) {
+							trans.executeSql("update shopcart set num=num+1 where dishesid=? ", [dishesId], function (ts, data) {
+							}, function (ts, message) {
+								alert(message);
+							});
+						});
+					} 
+		};
+		
+		
+		function updateShopCart(num,dishesId){
+			
+			var db = getCurrentDb();//初始化数据库
+            if(!db) {alert("您的浏览器不支持HTML5本地数据库");return;}	
+			
+			db.transaction(function (trans) {
+				trans.executeSql("update shopcart set num=? where dishesid=? ", [num,dishesId], function (ts, data) {
+					}, function (ts, message) {
+						alert(message);
+					});
+			});
+
+		};
+		
+	$(window).unload(function() {
+         alert("获取到了页面要关闭的事件了！"); 
+		 deleteDbTable();
+    });
+	</script>
+</body>
+</html>

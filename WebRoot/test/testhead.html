@@ -1,0 +1,174 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>档</title>
+<style>
+body, p, b, dl, dd, input, img, form, div, ul, li, h1, h2, h3, h4, h5,
+	h6, em {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+.header {
+	background: #8DEEEE;
+	height: 50px;
+	position: relative;
+	width: 66%;
+	margin: auto;
+}
+
+.header figure {
+	float: left;
+	margin-top: 5px;
+	position: relative
+}
+
+.header .wm-logo {
+	font-size: 34px;
+	color: #fff;
+	padding-left: 45px;
+	text-decoration: none;
+}
+
+.header .f-input {
+	position: absolute;
+	right: 35px;
+	width: 150px;
+	height: 36px;
+	font-size: 14px;
+	border-right: 1px solid #F0F8FF;
+}
+
+.header .filter-search {
+	position: absolute;
+	left: 450px;
+	top: 6px;
+	width: 36px;
+	height: 36px;
+	background-color: #fff;
+	background-size: 15px 15px;
+	background-position: center center;
+}
+
+.header .f-search-btn {
+	position: absolute;
+	top: 2px;
+	left: 10px;
+	font-size: 26px;
+}
+
+.header .nav {
+	width: 535px;
+	height: 50px;
+	left: 150px;
+	float: right;
+	position: relative;
+	overflow: hidden;
+	line-height: 50px;
+	list-style-type: none;
+}
+
+.nav li {
+	float: left;
+}
+
+.header .nav-item .nav-item-link {
+	height: 50px;
+	padding-left: 20px;
+	color: #fff;
+	font-size: 18px;
+	text-decoration: none;
+}
+
+.header .nav-item:hover {
+	opacity: .7;
+	filter: alpha(opacity = 80)
+}
+
+#user_info {
+	position: absolute;
+	right: 90px;
+	top: 8px;
+	color: #000;
+}
+
+#user_info .logout_info li {
+	height: 35px;
+	line-height: 34px;
+}
+
+#user_info .logout_info li:hover {
+	opacity: .7;
+	filter: alpha(opacity = 80)
+}
+
+#user_info .logout_info a {
+	font-size: 18px
+}
+
+#user_info .login_info li.uname {
+	height: 35px;
+	line-height: 35px
+}
+
+#user_info a {
+	color: #fff;
+	text-decoration: none;
+	padding-left: 10px;
+}
+
+#user_info ul {
+	list-style-type: none
+}
+
+#user_info li {
+	float: left
+}
+</style>
+</head>
+
+<body>
+	<header class="header">
+		<div class="ui-width header-wrap">
+			<figure>
+				<a href="/waimai" class="wm-logo">网上订餐</a>
+			</figure>
+
+			<div class="filter-search">
+				<input type="text" id="f-input" class="f-input placeholder-con"
+					placeholder="     搜索商户或商品" value=""> <a
+					href="/waimai/shoplist/793a04457c9fc405" id="f-close-btn"
+					title="重新搜索" class="f-search-btn hide"><img
+					src="http://web2.waimai.bdimg.com/static/waimai/images/search_icon_else_9fb9111.png"></img></a>
+
+				<div class="f-search-list"></div>
+			</div>
+			<nav>
+				<ul class="nav">
+					<li class="nav-item " id="order"><a href="#"
+						class="nav-item-link">首页</a></li>
+					<li class="nav-item " id="order"><a
+						href="/waimai?qt=orderlist&type=wait" class="nav-item-link">我的订单</a>
+					</li>
+
+				</ul>
+			</nav>
+			<div id="user_info" class="user-info-widget">
+				<div id="login_user_info" style="display:none;"></div>
+				<div id="logout_user_info">
+					<ul class="logout_info">
+						<li><a id="login" href="javascript:void(0);">&nbsp;登录</a></li>
+						<li><a
+							href="https://passport.baidu.com/v2/?reg&amp;regType=1&amp;tpl=ma"
+							target="_blank">注册</a></li>
+					</ul>
+				</div>
+			</div>
+			<script type="text/javascript"
+				src="http://passport.baidu.com/phoenix/account/jsapi"></script>
+		</div>
+	</header>
+</body>
+</html>

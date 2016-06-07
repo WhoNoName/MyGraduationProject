@@ -1,0 +1,244 @@
+*{
+	padding:0;
+	margin:0;
+}
+body{
+	background:#E0FFFF;
+	overflow:hidden;
+
+}
+.global{
+	width:1px;
+	height:1px;
+	position:absolute;
+	left:50%;
+	top:44%;
+	background:red;
+}
+.log,.sig{
+	width:500px;
+	top:-18000%;
+	background:#F0F8FF;
+	position:absolute;
+	border-radius:5px;
+	overflow:hidden;
+	outline:0 none;
+	border:1px solid #fff;
+}
+/*--move in--*/
+.sig_in,.log_in{
+	left:-300000%;
+	animation:move_in 0.4s linear forwards;
+	-webkit-animation:move_in 0.4s linear forwards;
+	-moz-animation:move_in 0.4s linear forwards;
+	-o-animation:move_in 0.4s linear forwards;
+}
+@keyframes move_in{
+	frome{left:-300000%}
+	to{left:-25000%}
+}
+@-webkit-keyframes move_in{
+	frome{left:-300000%}
+	to{left:-25000%}
+}
+@-moz-keyframes move_in{
+	frome{left:-300000%}
+	to{left:-25000%}
+}
+@-o-keyframes move_in{
+	frome{left:-300000%}
+	to{left:-25000%}
+}
+/*--move in--*/
+/*--move out--*/
+.sig_out,.log_out{
+	left:-25000%;
+	animation:move_out 1.4s linear forwards;
+	-webkit-animation:move_out 1.4s linear forwards;
+	-moz-animation:move_out 1.4s linear forwards;
+	-o-animation:move_out 1.4s linear forwards;
+}
+@keyframes move_out{
+	frome{left:-25000%}
+	to{left:1000000%}
+}
+@-webkit-keyframes move_out{
+	frome{left:-25000%}
+	to{left:1000000%}
+}
+@-moz-keyframes move_out{
+	frome{left:-25000%}
+	to{left:1000000%}
+}
+@-o-keyframes move_out{
+	frome{left:-25000%}
+	to{left:1000000%}
+}
+/*--move out--*/
+.shart{
+	animation:pc 4s linear infinite alternate;
+	-webkit-animation:pc 4s linear infinite alternate;
+	-moz-animation:pc 4s linear infinite alternate;
+	-o-animation:pc 4s linear infinite alternate;
+}
+@keyframes pc{
+	frome{box-shadow:0 0 0 #fff;}
+	to{box-shadow:0 0 50px #fff;}
+}
+@-webkit-keyframes pc{
+	frome{box-shadow:0 0 0 #fff;}
+	to{box-shadow:0 0 50px #fff;}
+}
+@-moz-keyframes pc{
+	frome{box-shadow:0 0 0 #fff;}
+	to{box-shadow:0 0 50px #fff;}
+}
+@-o-keyframes pc{
+	frome{box-shadow:0 0 0 #fff;}
+	to{box-shadow:0 0 50px #fff;}
+}
+dt{
+	margin-bottom:20px;
+}
+.titles{
+	height:55px;
+	color:#FFF;
+	background:#1E90FF;
+}
+h3{
+	line-height:55px;
+	font-family:'Arial';
+	font-size:25px;
+	font-weight:400;
+	text-align: center;
+	color: #fff;
+}
+input[type=text],input[type=password]{
+	height:30px;
+	width:230px;
+	padding:0 5px;
+	border:1px solid #e0ffff;
+	border-radius:3px;
+	letter-spacing:0.01em;
+}
+input[type=button]{
+	width:120px;
+	height:30px;
+	border:1px solid #F0F8FF;
+	border-radius:3px;
+	cursor:pointer;
+	font-size:16px;
+	color:#fff;
+	margin-left:140px;
+	transition:all 0.4s;
+	background-color: #1E90FF;
+}
+input[type=button]:hover{
+	text-decoration: none;
+	color:gray;
+	opacity: .6;
+}
+.letter,.password{
+	color:#1E90FF;
+	font: bold 15px/100% Arial, Helvetica, sans-serif;
+	text-indent:4em;
+	position:relative;
+}
+.password{
+	text-indent:2em;
+}
+#sig_in,#back{
+	margin-left:18px;
+}
+.warning{
+	position:absolute;
+	text-indent:0;
+	height:32px;
+	line-height:32px;
+	right:10px;
+	top:0;
+	color:red;
+	font-size:14px;
+	display:none;
+}
+.warning span{
+	animation:emo .5s linear infinite alternate;
+	-webkit-animation:emo .5s linear infinite alternate;
+	-moz-animation:emo .5s linear infinite alternate;
+	-o-animation:emo .5s linear infinite alternate;
+}
+@keyframes emo{
+	from {opacity:0;}
+	to {opacity:1;}
+}
+@-webkit-keyframes emo{
+	from {opacity:0;}
+	to {opacity:1;}
+}
+@-moz-keyframes emo{
+	from {opacity:0;}
+	to {opacity:1;}
+}
+@-o-keyframes emo{
+	from {opacity:0;}
+	to {opacity:1;}
+}
+
+.warning {
+	margin: 8px auto;
+}
+
+.login_page_btn{
+	
+}
+
+.other_login{
+	font-size:15px;
+	text-align: center;
+	margin-left: 60px;
+}
+
+.forget_password{
+	margin-left: 30px;
+}
+
+.login_body{
+	min-height: 600px;
+	height: 500px;
+}
+
+#orderfoot {
+	background: #1E90FF;
+	height: 60px;
+	position: fixed;
+	bottom: 0px;
+	width: 1250px;
+	color: white;
+	margin:auto;
+	left:0; 
+	right:0; 
+	bottom:0;
+}
+
+.input-group-addon {
+	color: #1E90FF;
+    background-color: #F0F8FF; 
+    border: 1px solid #F0F8FF; 
+	font: bold 15px/100% Arial, Helvetica, sans-serif;
+}
+
+.form-control{
+	display: inline;
+}
+
+/*----*/
+.log_in{
+	z-index:1;
+}
+
+
+.warning_span {
+	font: bold 10px/100% Arial, Helvetica, sans-serif;
+
+}
+/*----*/

@@ -1,0 +1,170 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+
+<meta charset="utf-8">
+<title>网上订餐系统</title>
+
+<style type="text/css">
+@import url("css/style.css");
+</style>
+
+</head>
+
+<body>
+
+	<!-- 顶部菜单条 -->
+<header class="header">
+	<div class="ui-width">
+		<figure>
+			<a href="toIndex.do" class="logo">网上订餐</a>
+		</figure>
+
+		<div class="search">
+			<input type="text" id="sinput" class="sinput placeholder-con"
+				value="     搜索店铺"> <a href="JavaScript:void(0)"
+				id="f-close-btn" title="搜索" class="search-btn"><img
+				src="images/search_icon.png"></img></a>
+
+			<div class="f-search-list"></div>
+		</div>
+		<nav>
+			<ul class="navigat">
+				<li class="nav-item " id="order_index_button"><a
+					href="toIndex.do" class="nav-link">首页</a></li>
+                 <li class="nav-item " id="user_order_button"><a
+					href="toIndex.do" class="nav-link">排行榜</a></li>   
+				<li class="nav-item " id="user_order_button"><a
+					href="toIndex.do" class="nav-link">我的订单</a></li>
+				<li class="nav-item " id="merchant_entry" style="display: none;"><a
+					href="toMerchantLogin.do" class="nav-link">商家入口</a></li>
+			</ul>
+		</nav>
+		<div id="user_info" class="user-info-widget">
+			<div id="login_user_info"  style="display: none;">
+				<ul class="login_info">
+					<li><a class="user_test usermessage title_btn" href="JavaScript:void(0)">username</a>
+					</li>
+
+					<li>				
+						<a class="user_test btn_personal title_btn" href="/profile"> 个人中心</a>
+					</li>										 
+					<li>		
+						<a class="user_test btn_logout title_btn" href="JavaScript:"> 退出登录
+						</a>
+					</li>
+
+					
+				</ul>
+			</div>
+
+
+			<div id="logout_user_info" >
+				<ul class="logout_info">
+					<li><a id="login" href="toLogin.do">&nbsp;登录/注册</a></li>
+				</ul>
+			</div>
+
+		</div>
+
+	</div>
+</header>
+<!-- 主体 -->
+	<div class="index_body">
+		<div class="index_body_box all_show_table">
+
+			<div class="index_dishes_type">
+
+				<table class="merchant_show_table">
+
+				</table>
+
+			</div>
+
+		
+
+			<div class="index_show_dishes">
+				<!-- background-->
+				<div class="alert_bg" style="display:none"></div>
+				<!-- alerts -->
+				<div id="alerts">
+					<div class="modal fade in" id="alert_who" style="display:none">
+						<div class="modal_dialog">
+							<div class="modal_content">
+								<div class="modal-header">
+									<input type="button" class="modal_title close" value="×" />
+									<h4 class="modal_title mh4">看看手气</h4>
+									<div class="clear"></div>
+								</div>
+								<div class="modal_footer">
+									<input type="button" class="btn" id="sure_try" value="试试手气" />
+								</div>
+								<div class="modal_body">
+									<div class="form_id" id="id_and_num">
+										<!-- 动态生成 -->
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+				<div id="show_float_dishes" class="float_dishes">
+					<!-- 动态生成 -->
+                    <table width="200" border="1">
+                      <tbody>
+                        <tr>
+                          <td>&nbsp;</td>
+                          <td>&nbsp;</td>
+                          <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td>&nbsp;</td>
+                          <td>&nbsp;</td>
+                          <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td>&nbsp;</td>
+                          <td>&nbsp;</td>
+                          <td>&nbsp;</td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+				</div>
+				<div class="clear"></div>
+
+
+
+			</div>
+		</div>
+	</div>
+
+
+
+	<footer id="orderfoot">
+	<ul>
+		<li><a href="merchant.do" target="_blank">商户中心</a></li>
+		<li>管理热线：<em>1111111111111111</em> <span>&nbsp;&nbsp;&nbsp;&nbsp;工作时间：周一至周日10:00-22:00</span>
+		</li>
+		<li>Design by WJX</li>
+	</ul>
+	</footer>
+
+
+	<script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
+
+	<script type="text/javascript" src="js/base.js"></script>
+	<script type="text/javascript" src="js/header_title.js"></script>
+	<script type="text/javascript" src="js/index_dishes_type.js"></script>
+	<script type="text/javascript" src="js/index_select.js"></script>
+	<script type="text/javascript" src="js/cookie_util.js"></script>
+
+	<script type="text/javascript">
+	
+	</script>
+</body>
+</html>
+
+

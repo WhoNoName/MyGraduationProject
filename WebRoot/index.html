@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>登录</title>
+
+<link type="text/css" rel="stylesheet" media="screen"
+	href="css/bootstrap.min.css" />
+
+
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/login.css" />
+
+
+<style type="text/css">
+</style>
+
+</head>
+<body>
+
+	<!-- 顶部菜单条 -->
+	<header class="header">
+		<div class="ui-width">
+			<figure>
+				<a href="toIndex.do" class="logo">网上订餐</a>
+			</figure>
+
+			<div class="search">
+				<input type="text" id="sinput" class="sinput placeholder-con"
+					value="     搜索店铺"> <a href="JavaScript:void(0)"
+					id="f-close-btn" title="搜索" class="search-btn"> <img alt="搜索"
+					src="images/search_icon.png" /></a>
+
+				<div class="f-search-list"></div>
+			</div>
+			<nav>
+				<ul class="navigat">
+					<li class="nav-item " id="order_index_button"><a
+						href="toIndex.do" class="nav-link"> 首页</a></li>
+					<li class="nav-item " id="sales_rank"><a href="toIndex.do"
+						class="nav-link">排行榜</a></li>
+					<li class="nav-item " id="user_order_button"><a
+						href="toIndex.do" class="nav-link">我的订单</a></li>
+					<li class="nav-item " id="merchant_entry" style="display: none;"><a
+						href="toMerchantLogin.do" class="nav-link">商家入口</a></li>
+				</ul>
+			</nav>
+			<div id="user_info" class="user-info-widget">
+				<div id="login_user_info">
+					<ul class="login_info">
+						<li><a class="user_test usermessage title_btn"
+							href="JavaScript:void(0)">username</a></li>
+
+						<li><a class="user_test btn_personal title_btn"
+							href="/profile"> <span class="glyphicon glyphicon-user"
+								aria-hidden="true"></span>&nbsp;个人中心
+						</a></li>
+						<li><a class="user_test btn_logout title_btn"
+							href="JavaScript:"> <span class="glyphicon glyphicon-off"
+								aria-hidden="true"></span>&nbsp;退出登录
+						</a></li>
+
+
+					</ul>
+				</div>
+
+
+				<div id="logout_user_info" style="display: none;">
+					<ul class="logout_info">
+						<li><a id="login" href="toLogin.do">&nbsp;登录|注册</a></li>
+					</ul>
+				</div>
+
+			</div>
+
+		</div>
+	</header>
+
+
+
+
+	<!-- 首页主体 -->
+	<div class="index_body">
+		<div class="index_body_box all_show_table">
+
+			<div class="index_dishes_type">
+
+				<table>
+					<td class="width50">
+						<div class="bar_one">
+							<span>商家分类：</span> <a href="JavaScript:void(0)"
+								class="type_checked" id="tp0">全部商家</a> <a
+								href="JavaScript:void(0)" id="tp1">快餐类</a> <a
+								href="JavaScript:void(0)" id="tp2">正餐类</a> <a
+								href="JavaScript:void(0)" id="tp3">小吃零食</a> <a
+								href="JavaScript:void(0)" id="tp4">甜品饮品</a> <a
+								href="JavaScript:void(0)" id="tp5">果蔬生鲜</a>
+						</div>
+					</td>
+					<td class="width10"><button type="button" value="吃啥"
+						id="index_dishes_random" class="btn show_dishes_random"><span class="glyphicon glyphicon-cutlery"
+									aria-hidden="true"></span>&nbsp;吃啥</button></td>
+					<td id="show_random_details"></td>
+					<td class="width15"><img type="button" value="谁取外卖"
+						id="index_dishes_random_btn" src="images/wp.png"></td>
+				</table>
+
+			</div>
+
+			<div class="index_dishes_orderbutton">
+
+				<table class="col-md-7">
+					<tr>
+						<td><button id="btn1" type="button"
+								class="btn show_type_checked index_order_btn" value="按默认排序">
+								按默认排序<span class="glyphicon glyphicon-triangle-top"
+									aria-hidden="true"></span>
+							</button></td>
+						<td><button id="btn2" type="button"
+								class="btn index_order_btn" value="按销量排序">
+								按销量排序<span class="glyphicon glyphicon-triangle-bottom"
+									aria-hidden="true"></span>
+							</button></td>
+						<td><button id="btn3" type="button"
+								class="btn index_order_btn" value="按速度排序">按速度排序
+								<span class="glyphicon glyphicon-triangle-top"
+									aria-hidden="true"></span>
+							</button></td>
+						<td><button id="btn4" type="button"
+								class="btn index_order_btn" value="按评分排序">按评分排序
+								<span class="glyphicon glyphicon-triangle-bottom"
+									aria-hidden="true"></span>
+							</button></td>
+						
+					</tr>
+				</table>
+			</div>
+
+			<div class="index_show_dishes">
+				<!-- background-->
+				<div class="alert_bg" style="display:none"></div>
+				<!-- alerts -->
+				<div id="alerts">
+					<div class="modal" id="alert_who" style="display:none">
+				      <div class="modal-dialog">
+				        <div class="modal-content">
+				          <div class="modal-header">
+				            <button type="button" class="close" data-dismiss="modal">
+                            <span aria-hidden="true" class="close">×</span>
+                            <span class="sr-only">Close</span>
+									</button>
+				            <h4 class="modal-title">看看手气</h4>
+                            <input type="button" class="btn"
+										id="sure_try" value="试试手气" />
+				          </div>
+				          <div class="modal-body">
+				              <div class="form_id" id="id_and_num">
+									<!-- 动态生成 -->
+	                          </div>
+				          </div>
+				          
+				        </div>
+				      </div>
+				    </div>		
+				</div>
+					
+
+				<div id="show_float_dishes" class="float_dishes">
+					<!-- 动态生成 -->
+				</div>
+				<div class="clear"></div>
+
+
+
+			</div>
+		</div>
+	</div>
+
+
+
+	<div id="orderfoot">
+		<ul>
+			<li><a href="merchant.do" target="_blank"><span
+					class="glyphicon glyphicon-home" aria-hidden="true"></span>&nbsp;商户中心</a>
+			</li>
+			<li><span class="glyphicon glyphicon-phone-alt"
+				aria-hidden="true"></span>&nbsp;
+				管理热线：<em>1111111111111111</em> 
+				<span>&nbsp;&nbsp;&nbsp;&nbsp;
+				<span class="glyphicon glyphicon-time" aria-hidden="true">
+				</span>&nbsp;工作时间：周一至周日10:00-22:00
+				</span>
+			</li>
+			<li><span class="glyphicon glyphicon-pencil" aria-hidden="true">
+				</span>&nbsp;
+				Design
+				by WJX
+			</li>
+		</ul>
+	</div>
+
+
+	<script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
+	<script type="text/javascript" src="js/base.js"></script>
+	<script type="text/javascript" src="js/header_title.js"></script>
+	<script type="text/javascript" src="js/index_dishes_type.js"></script>
+	<script type="text/javascript" src="js/index_select.js"></script>
+	<script type="text/javascript" src="js/cookie_util.js"></script>
+
+	<script type="text/javascript">
+		//标题部分页面选中
+		$("#order_index_button").addClass("title_checked_now");
+		//header
+		//登录部分
+		head_things();
+
+		$(function() {
+
+			//主页加载
+			loadIndexThings();
+
+			//手气
+			//选择菜品类型
+			index_things();
+
+			//吃啥显示
+			$("#index_dishes_random").click(randomDishes);
+
+			//排序按钮
+			select_btn();
+
+			//菜品类型选项
+			$(".bar_one a").click(merchantType);
+
+		});
+	</script>
+</body>
+</html>
